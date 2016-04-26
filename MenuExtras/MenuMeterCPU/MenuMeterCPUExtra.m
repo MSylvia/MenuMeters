@@ -247,6 +247,21 @@ const char* TEMPS_SHORT[][2] = {
     cpuGraphLength = extraMenu.size.width;
     NSImage *currentImage = [[[NSImage alloc] initWithSize:NSMakeSize(cpuGraphLength, height)] autorelease];
     [menuItem setImage:currentImage];
+
+    [extraMenu addItem:[NSMenuItem separatorItem]];
+
+    menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
+    [menuItem setEnabled:NO];
+    kCPUTopMenuIndex = [extraMenu indexOfItem:menuItem];
+    menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
+    [menuItem setEnabled:NO];
+    menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
+    [menuItem setEnabled:NO];
+    menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
+    [menuItem setEnabled:NO];
+    menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
+    [menuItem setEnabled:NO];
+
     [extraMenu addItem:[NSMenuItem separatorItem]];
 
     menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:[bundle localizedStringForKey:@"Temperature:" value:nil table:nil] action:nil keyEquivalent:@""];
@@ -720,6 +735,8 @@ const char* TEMPS_SHORT[][2] = {
 ///////////////////////////////////////////////////////////////
 
 - (void)updateCPUActivityDisplay:(NSTimer *)timer {
+
+    [cpuInfo refreshCPULoad];
 
 	// Get the current load
 	NSArray *currentLoad = [cpuInfo currentLoad];

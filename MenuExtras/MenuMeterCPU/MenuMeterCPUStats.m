@@ -23,6 +23,7 @@
 
 #import "MenuMeterCPUStats.h"
 
+#import "task_info.h"
 
 ///////////////////////////////////////////////////////////////
 //
@@ -62,7 +63,9 @@
 	if (!self) {
 		return nil;
 	}
-
+    
+    task_info_init();
+    
 	// Gather the pretty name
 	cpuName = [[self cpuPrettyName] retain];
 	if (!cpuName) {
@@ -347,5 +350,37 @@
 #endif
 
 } // _cpuPrettyName
+
+- (void) refreshCPULoad {
+    if (cpuProcOld == nil) {
+        cpuProcOld = cpuProc;
+        cpuProcTimeOld = cpuProcTime;
+    }
+
+    cpuProc = [[NSMutableDictionary alloc] init];
+
+    NSArray<NSRunningApplication *> *apps =[[NSWorkspace sharedWorkspace] runningApplications];
+    for (id app in apps) {
+        int pid = [app processIdentifier];
+        RunProcDyn dyn;
+        run_get_dynamic_proc_info(pid, &dyn);
+        [cpuProc setObject: [NSNumber numberWithDouble:(dyn.utime + dyn.stime)] forKey: [NSNumber numberWithInteger:pid ]];
+    }
+
+    cpuProcTime = CFAbsoluteTimeGetCurrent();
+
+    if (cpuProcOld != nil) {
+        cpuUsage = [[NSMutableDictionary alloc] init];
+        double diff = cpuProcTime - cpuProcTimeOld;
+        for (id pid in cpuProc) {
+            NSNumber *old = [cpuProcOld objectForKey:pid];
+            if(old != nil) {
+                double diffOld = [old doubleValue] - [cpuUsage[pid] doubleValue];
+
+                cpuUsage[pid] = [NSNumber numberWithDouble:diffOld / diff ];
+            }
+        }
+    }
+}
 
 @end

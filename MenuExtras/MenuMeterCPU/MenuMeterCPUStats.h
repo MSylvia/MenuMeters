@@ -50,6 +50,16 @@
 	// Localized float display
 	NSNumberFormatter					*twoDigitFloatFormatter;
 
+    // double current time
+    double                              cpuProcTimeOld;
+    // pid (int) -> user + system time in seconds (double)
+    NSMutableDictionary                 *cpuProcOld;
+    // double current time
+    double                              cpuProcTime;
+    // pid (int) -> user + system time in seconds (double)
+    NSMutableDictionary                 *cpuProc;
+    // pid (int) -> % usage (double)
+    NSMutableDictionary                 *cpuUsage;
 } // MenuMeterCPUStats
 
 // CPU info
@@ -57,6 +67,8 @@
 - (NSString *)cpuSpeed;
 - (uint32_t)numberOfCPUs;
 - (NSString *)processorDescription;
+
+- (void)refreshCPULoad;
 
 // Load info
 - (NSString *)currentProcessorTasks;

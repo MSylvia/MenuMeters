@@ -30,5 +30,10 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+    <key>SecTaskAccess</key>
+    <array>
+        <string>allowed</string>
+        <string>safe</string>
+    </array>
 </dict>
 </plist>

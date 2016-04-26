@@ -67,6 +67,8 @@
 		3383C1E81B69DD2D00915D5D /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3383C1E01B69DD2D00915D5D /* nl.lproj */; };
 		3383C1E91B69DD2D00915D5D /* zh_CN.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3383C1E11B69DD2D00915D5D /* zh_CN.lproj */; };
 		33BA36E91B69E74400B4220E /* MenuMeterDefaults.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4ECB2C805FE6F4000954E26 /* MenuMeterDefaults.bundle */; };
+		7B602F5C1CCF9B36006791DE /* task_info.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B602F5A1CCF9B36006791DE /* task_info.c */; };
+		7B602F5D1CCF9B36006791DE /* task_info.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B602F5A1CCF9B36006791DE /* task_info.c */; };
 		7BE1EA071CCE8B2A00CACD11 /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EA051CCE8B2A00CACD11 /* smc.c */; };
 		7BE1EA081CCE8B2A00CACD11 /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EA051CCE8B2A00CACD11 /* smc.c */; };
 		D403AD3C0E04E99C00348443 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D403AD3B0E04E99C00348443 /* Foundation.framework */; };
@@ -305,6 +307,8 @@
 		3383C1DF1B69DD2D00915D5D /* Japanese.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Japanese.lproj; sourceTree = "<group>"; };
 		3383C1E01B69DD2D00915D5D /* nl.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = nl.lproj; sourceTree = "<group>"; };
 		3383C1E11B69DD2D00915D5D /* zh_CN.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = zh_CN.lproj; sourceTree = "<group>"; };
+		7B602F5A1CCF9B36006791DE /* task_info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = task_info.c; path = MenuExtras/MenuMeterCPU/task_info.c; sourceTree = "<group>"; };
+		7B602F5B1CCF9B36006791DE /* task_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = task_info.h; path = MenuExtras/MenuMeterCPU/task_info.h; sourceTree = "<group>"; };
 		7BE1EA051CCE8B2A00CACD11 /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smc.c; path = MenuExtras/MenuMeterCPU/smc.c; sourceTree = "<group>"; };
 		7BE1EA061CCE8B2A00CACD11 /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smc.h; path = MenuExtras/MenuMeterCPU/smc.h; sourceTree = "<group>"; };
 		D40138D504F7B1DD00A87BC9 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/Installer.nib; sourceTree = "<group>"; };
@@ -816,6 +820,8 @@
 		D477AAD603D4B9DE00A87BC9 /* MenuMeterCPU */ = {
 			isa = PBXGroup;
 			children = (
+				7B602F5A1CCF9B36006791DE /* task_info.c */,
+				7B602F5B1CCF9B36006791DE /* task_info.h */,
 				7BE1EA051CCE8B2A00CACD11 /* smc.c */,
 				7BE1EA061CCE8B2A00CACD11 /* smc.h */,
 				D477AAE803D4BB7D00A87BC9 /* MenuMeterCPUView.h */,
@@ -1239,7 +1245,7 @@
 				TargetAttributes = {
 					3383C16F1B69B72500915D5D = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 95AQ7YKR5A;
+						DevelopmentTeam = 6NR6LRXZH3;
 					};
 					D4ECB2BB05FE6F3F00954E26 = {
 						DevelopmentTeam = 95AQ7YKR5A;
@@ -1526,6 +1532,7 @@
 				3383C18E1B69C77100915D5D /* MenuMeterNetPPP.m in Sources */,
 				3383C18D1B69C76200915D5D /* MenuMeterMemView.m in Sources */,
 				3383C1911B69C77B00915D5D /* MenuMeterNetExtra.m in Sources */,
+				7B602F5D1CCF9B36006791DE /* task_info.c in Sources */,
 				3383C1921B69C77E00915D5D /* MenuMeterNetView.m in Sources */,
 				3383C1901B69C77800915D5D /* MenuMeterNetConfig.m in Sources */,
 				3383C1961B69C78E00915D5D /* MenuMeterDiskView.m in Sources */,
@@ -1584,6 +1591,7 @@
 			files = (
 				D4ECB38105FE718D00954E26 /* MenuMeterCPUView.m in Sources */,
 				D4ECB38205FE718D00954E26 /* MenuMeterCPUExtra.m in Sources */,
+				7B602F5C1CCF9B36006791DE /* task_info.c in Sources */,
 				D4ECB38305FE718D00954E26 /* MenuMeterCPUStats.m in Sources */,
 				D4ECB38405FE718D00954E26 /* MenuMeterUptime.m in Sources */,
 				7BE1EA071CCE8B2A00CACD11 /* smc.c in Sources */,
@@ -1800,8 +1808,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1855,8 +1862,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1919,9 +1925,12 @@
 		D4AFB32E087726B20023B640 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MenuExtras/MenuMeterCPU/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = MenuMeterCPU;
+				SWIFT_OBJC_BRIDGING_HEADER = "CPU Meter-Bridging-Header.h";
 				WRAPPER_EXTENSION = menu;
 			};
 			name = Release;
@@ -2001,12 +2010,8 @@
 		D4AFB343087726B20023B640 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					x86_64,
-					i386,
-					ppc,
-				);
-				CODE_SIGN_IDENTITY = "";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2015,11 +2020,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MenuMeters.pch;
 				GCC_VERSION = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.4][arch=ppc]" = 10.2;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.5][arch=*]" = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PREBINDING = NO;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx10.11;
 				SEPARATE_STRIP = YES;
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -2032,12 +2035,8 @@
 		D4CD20430D88E34100481A51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					x86_64,
-					i386,
-					ppc,
-				);
-				CODE_SIGN_IDENTITY = "";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2046,11 +2045,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MenuMeters.pch;
 				GCC_VERSION = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.4][arch=ppc]" = 10.2;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.5][arch=*]" = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PREBINDING = NO;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx10.11;
 				SEPARATE_STRIP = YES;
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -2115,9 +2112,13 @@
 		D4CD20480D88E34100481A51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MenuExtras/MenuMeterCPU/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = MenuMeterCPU;
+				SWIFT_OBJC_BRIDGING_HEADER = "CPU Meter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = menu;
 			};
 			name = Debug;
