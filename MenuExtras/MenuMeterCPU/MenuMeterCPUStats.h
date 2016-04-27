@@ -75,4 +75,7 @@
 - (NSString *)loadAverage;
 - (NSArray *)currentLoad;
 
+- (NSMutableDictionary *) cpuUsage;
+- (NSString *) pidName:(int)pid;
+
 @end

@@ -25,6 +25,8 @@
 
 #import "task_info.h"
 
+#import <libproc.h>
+
 ///////////////////////////////////////////////////////////////
 //
 //	Private methods
@@ -64,7 +66,7 @@
 		return nil;
 	}
     
-    task_info_init();
+    macosx_get_task_for_pid_rights();
     
 	// Gather the pretty name
 	cpuName = [[self cpuPrettyName] retain];
@@ -373,14 +375,35 @@
         cpuUsage = [[NSMutableDictionary alloc] init];
         double diff = cpuProcTime - cpuProcTimeOld;
         for (id pid in cpuProc) {
-            NSNumber *old = [cpuProcOld objectForKey:pid];
+            id old = [cpuProcOld objectForKey:pid];
             if(old != nil) {
-                double diffOld = [old doubleValue] - [cpuUsage[pid] doubleValue];
+                id cur = [cpuProc objectForKey:pid];
+                if (cur != nil) {
+                    double diffOld = [cur doubleValue] - [old doubleValue];
 
-                cpuUsage[pid] = [NSNumber numberWithDouble:diffOld / diff ];
+                    cpuUsage[pid] = [NSNumber numberWithDouble:diffOld / diff];
+                }
             }
         }
     }
+}
+
+- (NSMutableDictionary*) cpuUsage {
+    return cpuUsage;
+}
+
+- (NSString *)pidName:(int)pid {
+    char pathBuffer [PROC_PIDPATHINFO_MAXSIZE];
+    proc_pidpath(pid, pathBuffer, sizeof(pathBuffer));
+    char nameBuffer[256];
+    unsigned long position = strlen(pathBuffer);
+    while(position > 0 && pathBuffer[position] != '/')
+    {
+        position--;
+    }
+    strcpy(nameBuffer, pathBuffer + position + 1);
+
+    return [NSString stringWithUTF8String: nameBuffer];
 }
 
 @end

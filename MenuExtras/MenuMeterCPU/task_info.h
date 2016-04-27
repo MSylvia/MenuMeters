@@ -17,6 +17,7 @@ typedef struct { /* dynamic process information */
 } RunProcDyn;
 
 void task_info_init();
+int macosx_get_task_for_pid_rights (void);
 int run_get_dynamic_proc_info(pid_t pid, RunProcDyn *rpd);
 
 #endif /* task_info_h */

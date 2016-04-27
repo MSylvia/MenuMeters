@@ -309,6 +309,7 @@
 		3383C1E11B69DD2D00915D5D /* zh_CN.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = zh_CN.lproj; sourceTree = "<group>"; };
 		7B602F5A1CCF9B36006791DE /* task_info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = task_info.c; path = MenuExtras/MenuMeterCPU/task_info.c; sourceTree = "<group>"; };
 		7B602F5B1CCF9B36006791DE /* task_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = task_info.h; path = MenuExtras/MenuMeterCPU/task_info.h; sourceTree = "<group>"; };
+		7B7B6EED1CD0C64A00953440 /* MenuMetersApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MenuMetersApp.entitlements; sourceTree = "<group>"; };
 		7BE1EA051CCE8B2A00CACD11 /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smc.c; path = MenuExtras/MenuMeterCPU/smc.c; sourceTree = "<group>"; };
 		7BE1EA061CCE8B2A00CACD11 /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smc.h; path = MenuExtras/MenuMeterCPU/smc.h; sourceTree = "<group>"; };
 		D40138D504F7B1DD00A87BC9 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/Installer.nib; sourceTree = "<group>"; };
@@ -580,6 +581,7 @@
 		3383C1711B69B72500915D5D /* MenuMetersApp */ = {
 			isa = PBXGroup;
 			children = (
+				7B7B6EED1CD0C64A00953440 /* MenuMetersApp.entitlements */,
 				3383C1721B69B72500915D5D /* AppDelegate.h */,
 				3383C1731B69B72600915D5D /* AppDelegate.m */,
 				3383C1C11B69DB0D00915D5D /* MainMenu.xib */,
@@ -1246,6 +1248,14 @@
 					3383C16F1B69B72500915D5D = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 6NR6LRXZH3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					D4ECB2BB05FE6F3F00954E26 = {
 						DevelopmentTeam = 95AQ7YKR5A;
@@ -1808,6 +1818,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = MenuMetersApp/MenuMetersApp.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1862,6 +1873,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = MenuMetersApp/MenuMetersApp.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;

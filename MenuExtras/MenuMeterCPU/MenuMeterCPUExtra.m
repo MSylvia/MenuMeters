@@ -243,10 +243,7 @@ const char* TEMPS_SHORT[][2] = {
 
     menuItem = (NSMenuItem *)[extraMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
     kCPUHistoryMenuIndex = [extraMenu indexOfItem:menuItem];
-    int height = [[NSFont menuFontOfSize:0] pointSize] * 2;
     cpuGraphLength = extraMenu.size.width;
-    NSImage *currentImage = [[[NSImage alloc] initWithSize:NSMakeSize(cpuGraphLength, height)] autorelease];
-    [menuItem setImage:currentImage];
 
     [extraMenu addItem:[NSMenuItem separatorItem]];
 
@@ -472,10 +469,39 @@ const char* TEMPS_SHORT[][2] = {
 	if (title) LiveUpdateMenuItemTitle(extraMenu, kCPULoadInfoMenuIndex, title);
 
     NSMenuItem *item = [extraMenu itemAtIndex:kCPUHistoryMenuIndex];
-    NSImage *image = [item image];
-    image = [[[NSImage alloc] initWithSize:image.size] autorelease];
+    int height = [[NSFont menuFontOfSize:0] pointSize] * 2;
+    NSImage *image = [[[NSImage alloc] initWithSize:NSMakeSize(cpuGraphLength, height)] autorelease];
     [self renderHistoryGraphIntoImage:image forProcessor:0 atOffset:0];
     [item setImage:image];
+    
+    {
+        long index = 0;
+        long max = index + 5;
+
+        NSDictionary *array = [cpuInfo cpuUsage];
+        
+        NSArray *sort = [array keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
+            if ([obj1 doubleValue] > [obj2 doubleValue]) {
+                
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            if ([obj1 doubleValue] < [obj2 doubleValue]) {
+                
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            return (NSComparisonResult)NSOrderedSame;
+        }];
+
+        for(int i = 0; i < [array count]; i++) {
+            if(index >= max)
+                break;
+            int pid = [(NSNumber*)[sort objectAtIndex: i] intValue];
+            double load = [(NSNumber*)[array objectForKey: [NSNumber numberWithInteger:pid ]] doubleValue];
+            NSString *name = [NSString stringWithFormat:@"%@ %.01f%%", [cpuInfo pidName: pid], load * 100];
+            LiveUpdateMenuItemTitle(extraMenu, index + kCPUTopMenuIndex, name);
+            index++;
+        }
+    }
 
     SMCOpen();
     {
